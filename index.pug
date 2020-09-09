@@ -1,0 +1,28 @@
+doctype html
+html
+    head
+        link(rel="stylesheet" href="style.css")
+    body
+        .frame
+            .moon
+                each i in [1,2,3,4,5,6]
+                    div(class="crate-"+i)
+            .hill-fg-1
+            .hill-fg-2
+            .hill-fg-3
+            .hill-bg-1
+            .hill-bg-2
+            .front
+                .temp 12°
+                .info Wind: E 7 km/h <br/>Humidity: 87%
+                .days 
+                    table
+                        tr 
+                            td Tue:
+                            td 21° / 9°
+
+                        tr
+                            td Wed:
+                            td 23° / 10°
+            each j in [1,2,3,4,5,6,7,8]
+                div(class="drop-"+j)

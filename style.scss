@@ -1,0 +1,184 @@
+$crate-color: rgba(87, 26, 26, 0.075);
+$moon-color: rgb(252, 239, 191);
+
+body {
+  height: 100vh;
+  background-color: rgb(225, 243, 250);
+}
+
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 4px;
+  box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  background: #1a2238;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.moon {
+  position: absolute;
+  top: 10%;
+  left: 18%;
+  height: 93px;
+  width: 93px;
+  background-color: $moon-color;
+  border-radius: 100%;
+  box-shadow: 1px 2px 7px 4px $moon-color;
+
+  .crate-1 {
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    height: 15px;
+    width: 15px;
+    background-color: $crate-color;
+    border-radius: 100%;
+  }
+
+  .crate-2 {
+    @extend .crate-1;
+    top: 45%;
+    left: 35%;
+  }
+
+  .crate-3 {
+    @extend .crate-1;
+    height: 7px;
+    width: 7px;
+    top: 60%;
+    left: 70%;
+  }
+
+  .crate-4 {
+    @extend .crate-3;
+    top: 30%;
+    left: 65%;
+    height: 10px;
+    width: 10px;
+  }
+
+  .crate-5 {
+    @extend .crate-2;
+    top: 75%;
+    left: 38%;
+    width: 18px;
+    height: 18px;
+  }
+
+  .crate-6 {
+    @extend .crate-1;
+    top: 55%;
+    left: 12%;
+    height: 8px;
+    width: 8px;
+  }
+}
+
+.hill-fg-1 {
+  position: absolute;
+  z-index: 2;
+  height: 290px;
+  width: 320px;
+  background-color: rgb(65, 65, 116);
+  border-radius: 55%;
+  top: 60%;
+  left: 10%;
+  bottom: -50%;
+}
+
+.hill-fg-2 {
+  @extend .hill-fg-1;
+  top: 65%;
+  left: -40%;
+}
+
+.hill-fg-3 {
+  @extend .hill-fg-1;
+  top: 65%;
+  left: 60%;
+}
+
+.hill-bg-1 {
+  @extend .hill-fg-1;
+  z-index: 1;
+  background-color: rgb(47, 47, 85);
+  top: 61%;
+  left: -15%;
+}
+
+.hill-bg-2 {
+  @extend .hill-bg-1;
+  top: 63%;
+  left: 38%;
+}
+
+.front {
+  position: absolute;
+  display: flex;
+  z-index: 5;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(245, 241, 241);
+  width: 100%;
+  height: 90px;
+
+  .temp {
+    display: flex;
+    flex: 0.3;
+    font-size: 55px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .info {
+    display: flex;
+    flex: 0.4;
+    align-items: center;
+  }
+
+  .days {
+    display: flex;
+    flex: 0.3;
+    align-items: center;
+  }
+}
+
+@for $i from 1 through 8 {
+  .drop-#{$i} {
+    position: absolute;
+    z-index: 10;
+    left: (-20 + 48 * $i) + px;
+    width: 10px;
+    height: 10px;
+    background: rgb(147, 167, 255);
+    border-radius: 50%;
+    bottom: 92px;
+    animation: drop
+      (0.7 + random(10) / 5) +
+      s
+      linear
+      (random(34) / 4) +
+      s
+      infinite;
+    animation-fill-mode: backwards;
+  }
+}
+
+@keyframes drop {
+  0% {
+    transform: translate(60px, -310px);
+  }
+  60% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: scaleX(3) scaleY(0.2);
+  }
+}
